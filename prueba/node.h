@@ -12,6 +12,12 @@ public:
     int getvalue();
     void setValue(int value);
     void print();
+    Node* getleft();
+    Node* getright();
+    Node* gethead();
+    void setRight(Node* nodo);
+    void setLeft(Node* nodo);
+    void sethead(Node* nodo);
 private:
     int data;
     Node* left;

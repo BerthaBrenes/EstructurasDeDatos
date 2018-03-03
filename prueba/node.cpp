@@ -29,6 +29,24 @@ void Node::print(){
 void Node::setValue(int value){
     data = value;
 }
+Node* Node::getleft(){
+    return left;
+}
+Node* Node::getright(){
+    return right;
+}
+Node* Node::gethead(){
+    return head;
+}
+void Node::sethead(Node *nodo){
+    head = nodo;
+}
+void Node::setLeft(Node *nodo){
+    left = nodo;
+}
+void Node::setRight(Node *nodo){
+    right = nodo;
+}
 
 Node::~Node(){}
 

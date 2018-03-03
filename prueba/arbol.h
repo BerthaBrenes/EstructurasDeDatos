@@ -1,6 +1,7 @@
 #ifndef ARBOL_H
 #define ARBOL_H
 #include "node.h"
+#include <string>
 
 class Arbol
 {
@@ -15,7 +16,7 @@ public:
     void destruirNodo(Node *nodo);
 private:
     void Add(Node *root, int value);
-    void Print(Node *root,int n);
+    void Print(Node *root);
     void Delete(Node *root, int value);
     Node *head = nullptr;
     int largo;
