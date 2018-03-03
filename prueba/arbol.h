@@ -16,7 +16,7 @@ public:
     void destruirNodo(Node *nodo);
 private:
     void Add(Node *root, int value);
-    void Print(Node *root);
+    void Print(Node *root, int ant);
     void Delete(Node *root, int value);
     Node *head = nullptr;
     int largo;

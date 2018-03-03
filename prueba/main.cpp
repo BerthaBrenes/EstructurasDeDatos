@@ -16,6 +16,7 @@ int main()
     Arbol Arbo;
     Arbo.Add(5);
     Arbo.Add(3);
+    Arbo.Add(4);
     Arbo.Add(2);
     Arbo.Add(6);
     Arbo.Print();

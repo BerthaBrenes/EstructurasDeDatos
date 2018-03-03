@@ -53,22 +53,25 @@ void Arbol::Add(Node *root, int value){
 void Arbol::Print(){
     int result = 0;
     cout<<head->getvalue()<<endl;
-    Print(head);
+    Print(head, result);
 }
-void Arbol::Print(Node *root){
+void Arbol::Print(Node *root, int ant){
     if(root != nullptr){
 
         if(root->getleft() != nullptr && root->getright() != nullptr){
             cout<<root->getleft()->getvalue()<<","<<root->getright()->getvalue()<<endl;
-            Print(root->getleft());
-            Print(root->getright());
+            Print(root->getleft(), root->getleft()->getvalue());
+            Print(root->getright(),root->getright()->getvalue());
         }else{
             if(root->getleft() == nullptr && root->getright() != nullptr){
-                Print(root->getright());
+                Print(root->getright(), root->getvalue());
             }if(root->getright() == nullptr && root->getleft() != nullptr){
-                Print(root->getleft());
+                Print(root->getleft(),root->getvalue());
             }else{
-             cout<<root->getvalue()<<endl;
+                if(ant != root->getvalue()){
+                    cout<<root->getvalue()<<endl;
+                }
+
             }
         }
     }
