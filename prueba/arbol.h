@@ -14,10 +14,16 @@ public:
     void Print();
     int getLargo();
     void destruirNodo(Node *nodo);
+    int lessHigh();
+    int highLess();
+    bool isLeaf(Node *nodo);
 private:
     void Add(Node *root, int value);
-    void Print(Node *root, int ant);
+    void Print(Node *root);
     void Delete(Node *root, int value);
+    void DeleteR(Node *root, int value);
+    int lessHigh(Node *root);
+    int highLess(Node *root);
     Node *head = nullptr;
     int largo;
 };
