@@ -136,7 +136,7 @@ void MainWindow::on_DeleteB_clicked()
     if(ui->Estructura->currentIndex() ==0){
        ListS.DeleteBegin();
        scene->clear();
-       QBrush blueBrush(Qt::green);
+       QBrush blueBrush(Qt::blue);
        QPen blackpen(Qt::black);
        blackpen.setWidth(2);
        int largoc = ListS.largo();
@@ -269,12 +269,35 @@ void MainWindow::on_DeleteP_clicked()
 {
     if(ui->Estructura->currentIndex() ==0){
        if(ui->Posicion->isEnabled() ){
-           ListS.DeleteNode(ui->Posicion->value());
+           if(ui->Posicion->value() < ListS.largo()){
+               ListS.DeleteNode(ui->Posicion->value());
+               scene->clear();
+               QBrush blueBrush(Qt::blue);
+               QPen blackpen(Qt::black);
+               blackpen.setWidth(2);
+               int largoc = ListS.largo();
+               int y = 30;
+               int i = 0;
+               while(i != largoc){
+                   rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
+                   y = y +30;
+                   i++;
+               }
+               largo = y;
+               ui->lcdNumber->display(ListS.largo());
+        }else{
+                QMessageBox::information(this,"Info","la posicion a eliminar debe existir");
+           }
+       }
+    }
+    if(ui->Estructura->currentIndex() ==1){
+        if(ui->Posicion->value() < ListD.largo()){
+           ListD.DeleteNode(ui->Posicion->value());
            scene->clear();
-           QBrush blueBrush(Qt::blue);
+           QBrush blueBrush(Qt::green);
            QPen blackpen(Qt::black);
            blackpen.setWidth(2);
-           int largoc = ListS.largo();
+           int largoc = ListD.largo();
            int y = 30;
            int i = 0;
            while(i != largoc){
@@ -282,44 +305,33 @@ void MainWindow::on_DeleteP_clicked()
                y = y +30;
                i++;
            }
-           largo = y;
-           ui->lcdNumber->display(ListS.largo());
-       }
-    }
-    if(ui->Estructura->currentIndex() ==1){
-       ListD.DeleteNode(ui->Posicion->value());
-       scene->clear();
-       QBrush blueBrush(Qt::green);
-       QPen blackpen(Qt::black);
-       blackpen.setWidth(2);
-       int largoc = ListD.largo();
-       int y = 30;
-       int i = 0;
-       while(i != largoc){
-           rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
-           y = y +30;
-           i++;
-       }
-       largoC = y;
-       ui->lcdNumber->display(ListD.largo());
+           largoC = y;
+           ui->lcdNumber->display(ListD.largo());
+    }else{
+            QMessageBox::information(this,"Info","la posicion a eliminar debe existir");
+        }
     }
     if(ui->Estructura->currentIndex() ==2){
-        ListC.DeleteNode(ui->Posicion->value());
-        scene->clear();
-        QBrush blueBrush(Qt::red);
-        QPen blackpen(Qt::black);
-        blackpen.setWidth(2);
-        int largoc = ListC.largo();
-        int y = 30;
-        int i = 0;
-        while(i != largoc){
-            rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
-            y = y +30;
-            i++;
+         if(ui->Posicion->value() < ListC.largo()){
+            ListC.DeleteNode(ui->Posicion->value());
+            scene->clear();
+            QBrush blueBrush(Qt::red);
+            QPen blackpen(Qt::black);
+            blackpen.setWidth(2);
+            int largoc = ListC.largo();
+            int y = 30;
+            int i = 0;
+            while(i != largoc){
+                rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
+                y = y +30;
+                i++;
+            }
+            largoD = y;
+            ui->lcdNumber->display(ListC.largo());
+     }else{
+            QMessageBox::information(this,"Info","la posicion a eliminar debe existir");
         }
-        largoD = y;
-        ui->lcdNumber->display(ListC.largo());
-     }
+    }
 }
 
 void MainWindow::on_AddB_clicked()
@@ -422,55 +434,67 @@ void MainWindow::on_AddP_clicked()
 
     if(ui->valor->value() !=0){
         if(ui->Estructura->currentIndex() ==0){
-          ListS.AddNode(ui->valor->value(),ui->Posicion->value());
-          scene->clear();
-          QBrush blueBrush(Qt::blue);
-          QPen blackpen(Qt::black);
-          blackpen.setWidth(2);
-          int largoc = ListS.largo();
-          int y = 30;
-          int i = 0;
-          while(i != largoc){
-              rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
-              y = y +30;
-              i++;
-          }
-          largo = y;
-          ui->lcdNumber->display(ListS.largo());
+            if(ui->Posicion->value() < ListS.largo()){
+              ListS.AddNode(ui->valor->value(),ui->Posicion->value());
+              scene->clear();
+              QBrush blueBrush(Qt::blue);
+              QPen blackpen(Qt::black);
+              blackpen.setWidth(2);
+              int largoc = ListS.largo();
+              int y = 30;
+              int i = 0;
+              while(i != largoc){
+                  rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
+                  y = y +30;
+                  i++;
+              }
+              largo = y;
+              ui->lcdNumber->display(ListS.largo());
+            }else{
+                QMessageBox::information(this,"Info","La posicion que quiere ingresar no existe");
+            }
         }
         if(ui->Estructura->currentIndex() ==1){
-            ListD.AddNode(ui->valor->value(),ui->Posicion->value());
-            scene->clear();
-            QBrush blueBrush(Qt::green);
-            QPen blackpen(Qt::black);
-            blackpen.setWidth(2);
-            int largoc = ListD.largo();
-            int y = 30;
-            int i = 0;
-            while(i != largoc){
-                rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
-                y = y +30;
-                i++;
+            if(ui->Posicion->value() < ListD.largo()){
+                ListD.AddNode(ui->valor->value(),ui->Posicion->value());
+                scene->clear();
+                QBrush blueBrush(Qt::green);
+                QPen blackpen(Qt::black);
+                blackpen.setWidth(2);
+                int largoc = ListD.largo();
+                int y = 30;
+                int i = 0;
+                while(i != largoc){
+                    rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
+                    y = y +30;
+                    i++;
+                }
+                largoC = y;
+                ui->lcdNumber->display(ListD.largo());
+            }else{
+                QMessageBox::information(this,"Info","La posicion que quiere ingresar no existe");
             }
-            largoC = y;
-            ui->lcdNumber->display(ListD.largo());
         }
         if(ui->Estructura->currentIndex() ==2){
-            ListC.AddNode(ui->valor->value(),ui->Posicion->value());
-            scene->clear();
-            QBrush blueBrush(Qt::green);
-            QPen blackpen(Qt::black);
-            blackpen.setWidth(2);
-            int largoc = ListC.largo();
-            int y = 30;
-            int i = 0;
-            while(i != largoc){
-                rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
-                y = y +30;
-                i++;
+            if(ui->Posicion->value()< ListC.largo()){
+                ListC.AddNode(ui->valor->value(),ui->Posicion->value());
+                scene->clear();
+                QBrush blueBrush(Qt::green);
+                QPen blackpen(Qt::black);
+                blackpen.setWidth(2);
+                int largoc = ListC.largo();
+                int y = 30;
+                int i = 0;
+                while(i != largoc){
+                    rectangle = scene->addRect(50,y,80,10,blackpen,blueBrush);
+                    y = y +30;
+                    i++;
+                }
+                largoD = y;
+                ui->lcdNumber->display(ListC.largo());
+            }else{
+                QMessageBox::information(this,"Info","La posicion que quiere ingresar no existe");
             }
-            largoD = y;
-            ui->lcdNumber->display(ListC.largo());
         }
     }else{
         QMessageBox::information(this,"Info","Porfavor ingrese un valor distinto de 0");
