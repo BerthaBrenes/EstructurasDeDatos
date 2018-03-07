@@ -14,9 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    list.cpp
+    list.cpp \
+    arbol.cpp \
+    listc.cpp \
+    listd.cpp \
+    node.cpp \
+    myrect.cpp
 
 HEADERS  += mainwindow.h \
-    list.h
+    list.h \
+    arbol.h \
+    listc.h \
+    listd.h \
+    node.h \
+    myrect.h
 
 FORMS    += mainwindow.ui

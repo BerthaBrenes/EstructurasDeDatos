@@ -13,26 +13,31 @@ using std::fixed;
 using std::setprecision;
 int main()
 {
-    Arbol Arbo;
-    Arbo.Add(5);
-    Arbo.Add(4);
-    Arbo.Add(8);
-    Arbo.Add(2);
-    Arbo.Add(7);
-    Arbo.Add(3);
-    Arbo.Add(9);
-    Arbo.Add(1);
-    Arbo.Print();
-    Arbo.Delete(1);
-    cout<<"nuevo print"<<endl;
-    Arbo.Print();
-   // Arbo.Print();
+
+    list Paul;
+    Paul.AddEnd(12);
+    Paul.AddEnd(4);
+    Paul.AddEnd(85);
+    Paul.printList();
+    cout<<"\n nueva lista"<<endl;
+    Paul.DeleteNode(0);
+    Paul.printList();
+
 }
 
-//listC Paul;
-//Paul.AddEnd(12);
-//Paul.AddEnd(4);
-//Paul.AddEnd(85);
-//Paul.printList();
-//Paul.DeleteNode(0);
-//Paul.printList();
+
+/**
+Arbol Arbo;
+Arbo.Add(5);
+Arbo.Add(4);
+Arbo.Add(8);
+Arbo.Add(2);
+Arbo.Add(7);
+Arbo.Add(3);
+Arbo.Add(9);
+Arbo.Add(1);
+Arbo.Print();
+Arbo.Delete(1);
+cout<<"nuevo print"<<endl;
+Arbo.Print();
+ * */
